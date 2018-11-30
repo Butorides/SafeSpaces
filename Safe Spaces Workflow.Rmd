@@ -1,0 +1,63 @@
+---
+title: "Natividad dataset analysis"
+author: "Reilly"
+date: "11/30/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(tidyverse)
+
+
+# Side note----
+
+pkgs = c("tidyverse", "plotly" , "lubridate")
+
+loadPackages = function(pkgs){
+
+  temp.packages = function(a){
+      if(!require(a, character.only = TRUE)){
+        install.packages(a)
+        library(a, character.only = TRUE)
+      }
+    }
+
+  lapply(pkgs, load.packages)
+
+}
+
+
+sapply(list.files(pattern="[.]R$", path="./Functions", full.names=TRUE), source)
+
+
+```
+
+## Read in the Natividad data
+ Using the recent dataset that was supposedly cleaned by Brock (from Guilio)
+ File originally called: natividad_temp_do_2013_2018.csv
+
+```{r}
+natividad_temp <- read_csv("~/Documents/Courses/MERP2/SafeSpacesData/natividad_temp_do_2013_2018.csv")
+```
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
